@@ -54,7 +54,7 @@ public abstract class ContenidoVisual implements Clasificable {
         if (nuevaCalificacion >= 1.0 && nuevaCalificacion <= 10.0) {
             this.calificacion = nuevaCalificacion;
         } else {
-            System.out.println("Error: La calificación para '" + titulo + "' debe esar entre 1 y 10.");
+            System.out.println("Error: La calificación para '" + titulo + "' debe estar entre 1 y 10.");
         }
     }
     public abstract void reproducir();
