@@ -11,23 +11,32 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("=== INICIANDO VISUAL TRACKER ===");
 
-        //Instanciar el servicio de catalogo
-        Catalogo miCatalogo = new Catalogo();
+        //por singleton ya no usamos new y usamos la global de Catalogo
+        Catalogo miCatalogo = Catalogo.getInstancia();
 
-        //crear series usando molde SerieAnimada
         SerieAnimada jujutsu = new SerieAnimada("Jujutsu Kaisen", 24);
         jujutsu.actualizarCalificacion(9.5);
-        jujutsu.incrementarCapitulo();
 
         SerieAnimada mha = new SerieAnimada("My Hero Academia", 138);
         mha.actualizarCalificacion(8.8);
 
-        //Agregar los objetos al catálogo
+        SerieAnimada naruto = new SerieAnimada("Naruto", 220);
+        naruto.actualizarCalificacion(10.0);
+
         System.out.println("\n--- Guardando en la base de datos temporal ---");
         miCatalogo.agregarContenido(jujutsu);
         miCatalogo.agregarContenido(mha);
+        miCatalogo.agregarContenido(naruto);
 
-        //Mostrar el inventario con el metodo que recorre el ArrayList
         miCatalogo.mostrarTodo();
+
+        //para comprobar singeton
+        //si tenemos que crear otro catalogo , en realidad nos devuelve el mismo que ya tiene datos
+        System.out.println("\n--- Comprobando singleton ---");
+        Catalogo catalogoPantallaDos = Catalogo.getInstancia();
+
+        if (miCatalogo == catalogoPantallaDos) {
+            System.out.println("Exito: ambas variables apuntan a la misma memoria");
+        }
     }
 }
