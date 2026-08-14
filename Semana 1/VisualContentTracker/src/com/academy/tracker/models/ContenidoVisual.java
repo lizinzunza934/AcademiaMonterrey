@@ -58,6 +58,7 @@ public abstract class ContenidoVisual implements Clasificable {
         }
     }
     public abstract void reproducir();
+    public abstract void mostrarDetalles();
 }
 
 
