@@ -25,13 +25,13 @@ public class Catalogo {
     public void mostrarTodo() {
         System.out.println("\n=== MI CATALÓGO DE CONTENIDO VISUAL ===");
         if (listaContenidos.isEmpty()) {
-            System.out.println("El catáloo está vacío.");
+            System.out.println("El catálogo está vacío.");
         } else {
             //cada ContenidoVisual 'c' que exista dentro de 'listaContenidos' ...
             for (ContenidoVisual c : listaContenidos) {
                 c.mostrarDetalles();
             }
         }
-        System.out.println("Total histórico de reistros: " + ContenidoVisual.getTotalRegistros());
+        System.out.println("Total histórico de registros: " + ContenidoVisual.getTotalRegistros());
     }
 }

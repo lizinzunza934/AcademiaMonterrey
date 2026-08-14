@@ -1,4 +1,5 @@
 import com.academy.tracker.models.SerieAnimada;
+import com.academy.tracker.services.Catalogo;
 
 import java.nio.file.FileSystemNotFoundException;
 
@@ -10,26 +11,23 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("=== INICIANDO VISUAL TRACKER ===");
 
-        //llamar nuestro molde SerieAnimada
-        SerieAnimada miSerie = new SerieAnimada("Jujutsu Kaisen", 24);
+        //Instanciar el servicio de catalogo
+        Catalogo miCatalogo = new Catalogo();
 
-        //ver que se heredó el metodo de mostrar detalles y titulos
-        miSerie.mostrarDetalles();
+        //crear series usando molde SerieAnimada
+        SerieAnimada jujutsu = new SerieAnimada("Jujutsu Kaisen", 24);
+        jujutsu.actualizarCalificacion(9.5);
+        jujutsu.incrementarCapitulo();
 
-        //usar el comportamiento de una serie
-        miSerie.incrementarCapitulo();
-        miSerie.incrementarCapitulo();
+        SerieAnimada mha = new SerieAnimada("My Hero Academia", 138);
+        mha.actualizarCalificacion(8.8);
 
-        //probar el contrato de la interfaz (actualizar la calificación)
-        System.out.print("\n--- Calificando la serie ---");
-        miSerie.actualizarCalificacion(9.5); //probar con número valido
-        miSerie.actualizarCalificacion(15.0); //forzar error para verificar si la validacion funciona
+        //Agregar los objetos al catálogo
+        System.out.println("\n--- Guardando en la base de datos temporal ---");
+        miCatalogo.agregarContenido(jujutsu);
+        miCatalogo.agregarContenido(mha);
 
-        //ver detalles actualizados
-        miSerie.mostrarDetalles();
-
-        //probar polimorfismo
-        System.out.print("\n--- Reproduciendo ---");
-        miSerie.reproducir();
-        }
+        //Mostrar el inventario con el metodo que recorre el ArrayList
+        miCatalogo.mostrarTodo();
     }
+}
