@@ -47,14 +47,13 @@ public abstract class ContenidoVisual implements Clasificable {
     }
 
     //Tomamos la Interfaz Clasificable
-    //soreescribimos con override
+    //soreescribimos con override agregamos excepcion throw necesaria para manejar errores
     @Override
     public void actualizarCalificacion(double nuevaCalificacion) {
-        //ordenamos imperativo, el cómo y el qué
         if (nuevaCalificacion >= 1.0 && nuevaCalificacion <= 10.0) {
             this.calificacion = nuevaCalificacion;
         } else {
-            System.out.println("Error: La calificación para '" + titulo + "' debe estar entre 1 y 10.");
+            throw new IllegalArgumentException("Calificación inválida para '" + titulo + "'. Debe estar entre 1.0 y 10.0");
         }
     }
     public abstract void reproducir();
