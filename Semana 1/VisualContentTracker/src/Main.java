@@ -1,47 +1,68 @@
 import com.academy.tracker.models.SerieAnimada;
 import com.academy.tracker.services.Catalogo;
+import java.util.Scanner; // herramienta para leer el teclado
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("=== INICIANDO VISUAL TRACKER ===");
-
         Catalogo miCatalogo = Catalogo.getInstancia();
 
-        // instanciar las series
-        SerieAnimada jujutsu = new SerieAnimada("Jujutsu Kaisen", 24);
-        SerieAnimada mha = new SerieAnimada("My Hero Academia", 138);
-        SerieAnimada naruto = new SerieAnimada("Naruto", 220);
+        // intanciar el Scanner, decirle que escuche la entrada del sistema (System.in)
+        Scanner teclado = new Scanner(System.in);
 
-        // usar método auxiliar para calificar
-        System.out.println("\n--- Procesando Calificaciones ---");
-        calificarSeguro(jujutsu, 9.5);
-        calificarSeguro(mha, 8.8);
-        calificarSeguro(naruto, 15.0); // asinar la calificació manualmente
+        //variable que controla el bucle
+        boolean salir = false;
 
-        System.out.println("\n--- Guardando en la base de datos temporal ---");
-        miCatalogo.agregarContenido(jujutsu);
-        miCatalogo.agregarContenido(mha);
-        miCatalogo.agregarContenido(naruto);
+        System.out.println("=== INICIANDO VISUAL TRACKER ===");
 
-        miCatalogo.mostrarTodo();
+        // el  bucle para reptirlo
+        while (!salir) {
+            System.out.println("\n=== MENÚ PRINCIPAL ===");
+            System.out.println("1. Agregar una nueva Serie");
+            System.out.println("2. Ver todo mi Catálogo");
+            System.out.println("3. Salir del programa");
+            System.out.print("Elige una opción: ");
 
-        System.out.println("\n--- Comprobando singleton ---");
-        Catalogo catalogoPantallaDos = Catalogo.getInstancia();
+            // el scanner espera el numero entero del usuario
+            int opcion = teclado.nextInt();
 
-        if (miCatalogo == catalogoPantallaDos) {
-            System.out.println("Exito: ambas variables apuntan a la misma memoria");
+            // limpiar el buffer
+            teclado.nextLine();
+
+            // el switch de la sinteracciones con el menu
+            switch (opcion) {
+                case 1:
+                    System.out.println("\n--- NUEVO REGISTRO ---");
+                    System.out.print("Escribe el nombre de la serie: ");
+                    String titulo = teclado.nextLine(); // lee texto
+
+                    System.out.print("¿Cuántos capítulos tiene en total?: ");
+                    int capitulos = teclado.nextInt(); // lee numeros
+
+                    // usar el molde para crear la serie con los datos que dio el usuario
+                    SerieAnimada nuevaSerie = new SerieAnimada(titulo, capitulos);
+                    miCatalogo.agregarContenido(nuevaSerie);
+                    break; // Termina la opción 1 y vuelve a empezar el menú
+
+                case 2:
+                    // Llamamos a nuestro servicio de catálogo para que imprima todo
+                    miCatalogo.mostrarTodo();
+                    break;
+
+                case 3:
+                    System.out.println("\nGuardando información... ¡VUelve pronto!");
+                    salir = true; // cuando es truw el ciclo while se rompe y el programa termina
+                    break;
+
+                default:
+                    // el usuario tecla un numero invalido
+                    System.out.println("Opción no válida. Por favor intenta de nuevo.");
+                    break;
+            }
         }
-    }
 
-    // metodo auxiliar dry para menejar excepciones al tener una calificacion no deseado
-    public static void calificarSeguro(SerieAnimada serie, double calificacion) {
-        try {
-            serie.actualizarCalificacion(calificacion);
-            System.out.println("Calificación de " + serie.getTitulo() + " actualizada a " + calificacion);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Alerta interceptada en '" + serie.getTitulo() + "': " + e.getMessage());
-        }
+        // terminamos con buena practica
+        teclado.close();
     }
 }
