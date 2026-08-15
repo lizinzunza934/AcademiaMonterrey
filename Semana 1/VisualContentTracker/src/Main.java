@@ -1,5 +1,6 @@
 import com.academy.tracker.models.SerieAnimada;
 import com.academy.tracker.services.Catalogo;
+import com.academy.tracker.models.ContenidoVisual;
 import java.util.Scanner; // herramienta para leer el teclado
 
 public class Main {
@@ -21,7 +22,8 @@ public class Main {
             System.out.println("\n=== MENÚ PRINCIPAL ===");
             System.out.println("1. Agregar una nueva Serie");
             System.out.println("2. Ver todo mi Catálogo");
-            System.out.println("3. Salir del programa");
+            System.out.println("3. Calificar una Serie");
+            System.out.println("4. Salir del programa");
             System.out.print("Elige una opción: ");
 
             // el scanner espera el numero entero del usuario
@@ -35,31 +37,57 @@ public class Main {
                 case 1:
                     System.out.println("\n--- NUEVO REGISTRO ---");
                     System.out.print("Escribe el nombre de la serie: ");
-                    String titulo = teclado.nextLine(); // lee texto
+                    String titulo = teclado.nextLine();
 
                     System.out.print("¿Cuántos capítulos tiene en total?: ");
-                    int capitulos = teclado.nextInt(); // lee numeros
+                    int capitulos = teclado.nextInt();
+                    teclado.nextLine(); // limpiar el buffer
 
-                    // usar el molde para crear la serie con los datos que dio el usuario
                     SerieAnimada nuevaSerie = new SerieAnimada(titulo, capitulos);
                     miCatalogo.agregarContenido(nuevaSerie);
-                    break; // Termina la opción 1 y vuelve a empezar el menú
+                    break;
 
                 case 2:
-                    // Llamamos a nuestro servicio de catálogo para que imprima todo
                     miCatalogo.mostrarTodo();
                     break;
 
+                // opcion nueva para que usuario califique
                 case 3:
-                    System.out.println("\nGuardando información... ¡VUelve pronto!");
-                    salir = true; // cuando es truw el ciclo while se rompe y el programa termina
+                    System.out.println("\n--- CALIFICAR CONTENIDO ---");
+                    System.out.print("Escribe el título de la serie: ");
+                    String tituloBuscar = teclado.nextLine();
+
+                    //llamamos a nuestro metodo de busqueda
+                    ContenidoVisual encontrado = miCatalogo.buscarPorTitulo(tituloBuscar);
+
+                    //si no es null seguimos
+                    if (encontrado != null) {
+                        System.out.print("Ingresa la nueva calificación (1.0 a 10.0): ");
+                        double nuevaCalificacion = teclado.nextDouble();
+                        teclado.nextLine(); //limpiar buffer de enter
+
+                        //manejamos errores
+                        try {
+                            encontrado.actualizarCalificacion(nuevaCalificacion);
+                            System.out.println("Calificación actualizada con éxito.");
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Alerta: " + e.getMessage());
+                        }
+                    } else {
+                        System.out.println("No se encontró ninguna serie llamada '" + tituloBuscar + "'.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("\nGuardando información... ¡Vuelve pronto!");
+                    salir = true;
                     break;
 
                 default:
-                    // el usuario tecla un numero invalido
                     System.out.println("Opción no válida. Por favor intenta de nuevo.");
                     break;
             }
+
         }
 
         // terminamos con buena practica

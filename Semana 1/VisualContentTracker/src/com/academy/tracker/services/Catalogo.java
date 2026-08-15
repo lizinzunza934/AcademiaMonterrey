@@ -44,4 +44,16 @@ public class Catalogo {
         }
         System.out.println("Total histórico de registros: " + ContenidoVisual.getTotalRegistros());
     }
+
+    // metodo de busqueda imperativo
+    public ContenidoVisual buscarPorTitulo(String tituloBuscado) {
+        // recorrer la lista uno por uno
+        for (ContenidoVisual c : listaContenidos) {
+            // equalsIgnoreCase compara los textos ignorando si se escibieron cap letters o no
+            if (c.getTitulo().equalsIgnoreCase(tituloBuscado)) {
+                return c; // se encuentra y devuelve
+            }
+        }
+        return null; // si el ciclo termina se arroja Null
+    }
 }
