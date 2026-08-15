@@ -23,7 +23,8 @@ public class Main {
             System.out.println("1. Agregar una nueva Serie");
             System.out.println("2. Ver todo mi Catálogo");
             System.out.println("3. Calificar una Serie");
-            System.out.println("4. Salir del programa");
+            System.out.println("4. Registrar un capitulo visto");
+            System.out.println("5. Salir del programa");
             System.out.print("Elige una opción: ");
 
             // el scanner espera el numero entero del usuario
@@ -78,13 +79,35 @@ public class Main {
                     }
                     break;
 
+                // registrar progreso plus casting e intanceof
                 case 4:
-                    System.out.println("\nGuardando información... ¡Vuelve pronto!");
-                    salir = true;
+                    System.out.println("\n--- REGISTRAR CAPÍTULO VISTO ---");
+                    System.out.print("Escribe el título exacto de la serie: ");
+                    String tituloProgreso = teclado.nextLine();
+
+                    // buscar contenido reutilizando codigo
+                    ContenidoVisual contenidoEncontrado = miCatalogo.buscarPorTitulo(tituloProgreso);
+
+                    if (contenidoEncontrado != null) {
+                        if (contenidoEncontrado instanceof SerieAnimada) {
+
+                            // castear para trnasformar la variable genérica a una específica
+                            SerieAnimada serieParaAvanzar = (SerieAnimada) contenidoEncontrado;
+
+                            // usamos el metodo exclusivo de la serie
+                            serieParaAvanzar.incrementarCapitulo();
+
+                        } else {
+                            System.out.println("El contenido encontrado no es una serie con capítulos.");
+                        }
+                    } else {
+                        System.out.println("No se encontró ninguna serie llamada '" + tituloProgreso + "'.");
+                    }
                     break;
 
-                default:
-                    System.out.println("Opción no válida. Por favor intenta de nuevo.");
+                case 5:
+                    System.out.println("\nGuardando información en memoria... ¡Hasta pronto!");
+                    salir = true;
                     break;
             }
 
