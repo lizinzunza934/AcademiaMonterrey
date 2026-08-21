@@ -34,7 +34,7 @@ public class MagoServiceImpl implements MagoService {
         }
         else {
             // we didn't find the employee
-            throw new RuntimeException("Did not find employee id - " + theId);
+            throw new RuntimeException("No se encontró el id del mago - " + theId);
         }
 
         return theMago;
