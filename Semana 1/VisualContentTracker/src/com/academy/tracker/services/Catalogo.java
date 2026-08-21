@@ -30,7 +30,7 @@ public class Catalogo {
 
     public void agregarContenido(ContenidoVisual contenido) {
         listaContenidos.add(contenido);
-        System.out.println("✅ Registro exitoso: '" + contenido.getTitulo() + "' se añadió al catálogo.");
+        System.out.println("Registro exitoso: '" + contenido.getTitulo() + "' se añadió al catálogo.");
     }
 
     public void mostrarTodo() {

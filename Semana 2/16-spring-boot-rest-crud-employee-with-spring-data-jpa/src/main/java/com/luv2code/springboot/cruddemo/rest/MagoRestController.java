@@ -1,8 +1,8 @@
 package com.luv2code.springboot.cruddemo.rest;
 
 import tools.jackson.databind.json.JsonMapper;
-import com.luv2code.springboot.cruddemo.entity.Employee;
-import com.luv2code.springboot.cruddemo.service.EmployeeService;
+import com.luv2code.springboot.cruddemo.entity.Mago;
+import com.luv2code.springboot.cruddemo.service.MagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,74 +11,74 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class EmployeeRestController {
+public class MagoRestController {
 
-    private EmployeeService employeeService;
+    private MagoService magoService;
 
     private JsonMapper jsonMapper;
 
     @Autowired
-    public EmployeeRestController(EmployeeService theEmployeeService, JsonMapper theJsonMapper) {
-        employeeService = theEmployeeService;
+    public MagoRestController(MagoService theMagoService, JsonMapper theJsonMapper) {
+        magoService = theMagoService;
         jsonMapper = theJsonMapper;
     }
 
     // expose "/employees" and return a list of employees
     @GetMapping("/employees")
-    public List<Employee> findAll() {
-        return employeeService.findAll();
+    public List<Mago> findAll() {
+        return magoService.findAll();
     }
 
     // add mapping for GET /employees/{employeeId}
 
     @GetMapping("/employees/{employeeId}")
-    public Employee getEmployee(@PathVariable int employeeId) {
+    public Mago getEmployee(@PathVariable int employeeId) {
 
-        Employee theEmployee = employeeService.findById(employeeId);
+        Mago theMago = magoService.findById(employeeId);
 
-        if (theEmployee == null) {
+        if (theMago == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 
-        return theEmployee;
+        return theMago;
     }
 
     // add mapping for POST /employees - add new employee
 
     @PostMapping("/employees")
-    public Employee addEmployee(@RequestBody Employee theEmployee) {
+    public Mago addEmployee(@RequestBody Mago theMago) {
 
         // also just in case they pass an id in JSON ... set id to 0
         // this is to force a save of new item ... instead of update
 
-        theEmployee.setId(0);
+        theMago.setId(0);
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Mago dbMago = magoService.save(theMago);
 
-        return dbEmployee;
+        return dbMago;
     }
 
     // add mapping for PUT /employees - update existing employee
 
     @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee theEmployee) {
+    public Mago updateEmployee(@RequestBody Mago theMago) {
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Mago dbMago = magoService.save(theMago);
 
-        return dbEmployee;
+        return dbMago;
     }
 
     // add mapping for PATCH /employees/{employeeId} - patch employee ... partial
     // update
 
     @PatchMapping("/employees/{employeeId}")
-    public Employee patchEmployee(@PathVariable int employeeId,
-            @RequestBody Map<String, Object> patchPayload) {
+    public Mago patchEmployee(@PathVariable int employeeId,
+                              @RequestBody Map<String, Object> patchPayload) {
 
         // Step 1: Retrieve the existing employee from database
-        Employee tempEmployee = employeeService.findById(employeeId);
+        Mago tempMago = magoService.findById(employeeId);
 
-        if (tempEmployee == null) {
+        if (tempMago == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 
@@ -91,12 +91,12 @@ public class EmployeeRestController {
 
         // Step 3: Apply the partial update
         // This creates a NEW employee object with the updates applied
-        Employee patchedEmployee = jsonMapper.updateValue(tempEmployee, patchPayload);
+        Mago patchedMago = jsonMapper.updateValue(tempMago, patchPayload);
 
         // Step 4: Save the updated employee to database and return it
-        Employee dbEmployee = employeeService.save(patchedEmployee);
+        Mago dbMago = magoService.save(patchedMago);
 
-        return dbEmployee;
+        return dbMago;
     }
 
     // add mapping for DELETE /employees/{employeeId} - delete employee
@@ -104,15 +104,15 @@ public class EmployeeRestController {
     @DeleteMapping("/employees/{employeeId}")
     public String deleteEmployee(@PathVariable int employeeId) {
 
-        Employee tempEmployee = employeeService.findById(employeeId);
+        Mago tempMago = magoService.findById(employeeId);
 
         // throw exception if null
 
-        if (tempEmployee == null) {
+        if (tempMago == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 
-        employeeService.deleteById(employeeId);
+        magoService.deleteById(employeeId);
 
         return "Deleted employee id - " + employeeId;
     }

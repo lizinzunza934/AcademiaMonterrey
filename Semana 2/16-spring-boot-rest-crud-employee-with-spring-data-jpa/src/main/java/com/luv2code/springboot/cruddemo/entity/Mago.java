@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Mago {
 
     // define fields
     @Id
@@ -23,11 +23,11 @@ public class Employee {
 
 
     // define constructors
-    public Employee() {
+    public Mago() {
 
     }
 
-    public Employee(String firstName, String lastName, String email) {
+    public Mago(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
