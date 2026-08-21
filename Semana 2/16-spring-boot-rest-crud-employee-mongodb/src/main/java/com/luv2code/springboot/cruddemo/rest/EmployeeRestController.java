@@ -1,7 +1,7 @@
 package com.luv2code.springboot.cruddemo.rest;
 
+import com.luv2code.springboot.cruddemo.entity.Mago;
 import tools.jackson.databind.json.JsonMapper;
-import com.luv2code.springboot.cruddemo.entity.Employee;
 import com.luv2code.springboot.cruddemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class EmployeeRestController {
 
     // expose "/employees" and return a list of employees
     @GetMapping("/employees")
-    public List<Employee> findAll() {
+    public List<Mago> findAll() {
         return employeeService.findAll();
     }
 
@@ -34,21 +34,21 @@ public class EmployeeRestController {
     // El employeeId ahora es String: un ObjectId de MongoDB, no un entero.
 
     @GetMapping("/employees/{employeeId}")
-    public Employee getEmployee(@PathVariable String employeeId) {
+    public Mago getEmployee(@PathVariable String employeeId) {
 
-        Employee theEmployee = employeeService.findById(employeeId);
+        Mago theMago = employeeService.findById(employeeId);
 
-        if (theEmployee == null) {
+        if (theMago == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 
-        return theEmployee;
+        return theMago;
     }
 
     // add mapping for POST /employees - add new employee
 
     @PostMapping("/employees")
-    public Employee addEmployee(@RequestBody Employee theEmployee) {
+    public Mago addEmployee(@RequestBody Mago theMago) {
 
         // also just in case they pass an id in JSON ... set id to null
         // this is to force a save of new item ... instead of update
@@ -57,34 +57,34 @@ public class EmployeeRestController {
         // viene nulo se inserta un documento nuevo, y si viene con valor se
         // REEMPLAZA el documento que ya existía con ese id.
 
-        theEmployee.setId(null);
+        theMago.setId(null);
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Mago dbMago = employeeService.save(theMago);
 
-        return dbEmployee;
+        return dbMago;
     }
 
     // add mapping for PUT /employees - update existing employee
 
     @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee theEmployee) {
+    public Mago updateEmployee(@RequestBody Mago theMago) {
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Mago dbMago = employeeService.save(theMago);
 
-        return dbEmployee;
+        return dbMago;
     }
 
     // add mapping for PATCH /employees/{employeeId} - patch employee ... partial
     // update
 
     @PatchMapping("/employees/{employeeId}")
-    public Employee patchEmployee(@PathVariable String employeeId,
-            @RequestBody Map<String, Object> patchPayload) {
+    public Mago patchEmployee(@PathVariable String employeeId,
+                              @RequestBody Map<String, Object> patchPayload) {
 
         // Step 1: Retrieve the existing employee from database
-        Employee tempEmployee = employeeService.findById(employeeId);
+        Mago tempMago = employeeService.findById(employeeId);
 
-        if (tempEmployee == null) {
+        if (tempMago == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 
@@ -97,12 +97,12 @@ public class EmployeeRestController {
 
         // Step 3: Apply the partial update
         // This creates a NEW employee object with the updates applied
-        Employee patchedEmployee = jsonMapper.updateValue(tempEmployee, patchPayload);
+        Mago patchedMago = jsonMapper.updateValue(tempMago, patchPayload);
 
         // Step 4: Save the updated employee to database and return it
-        Employee dbEmployee = employeeService.save(patchedEmployee);
+        Mago dbMago = employeeService.save(patchedMago);
 
-        return dbEmployee;
+        return dbMago;
     }
 
     // add mapping for DELETE /employees/{employeeId} - delete employee
@@ -110,11 +110,11 @@ public class EmployeeRestController {
     @DeleteMapping("/employees/{employeeId}")
     public String deleteEmployee(@PathVariable String employeeId) {
 
-        Employee tempEmployee = employeeService.findById(employeeId);
+        Mago tempMago = employeeService.findById(employeeId);
 
         // throw exception if null
 
-        if (tempEmployee == null) {
+        if (tempMago == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 

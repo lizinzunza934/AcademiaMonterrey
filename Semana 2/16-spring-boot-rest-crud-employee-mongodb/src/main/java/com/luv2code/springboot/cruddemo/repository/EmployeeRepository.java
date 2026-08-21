@@ -1,6 +1,6 @@
 package com.luv2code.springboot.cruddemo.repository;
 
-import com.luv2code.springboot.cruddemo.entity.Employee;
+import com.luv2code.springboot.cruddemo.entity.Mago;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  *
  * Los dos parámetros son el tipo de la entidad y el tipo de su @Id.
  */
-public interface EmployeeRepository extends MongoRepository<Employee, String> {
+public interface EmployeeRepository extends MongoRepository<Mago, String> {
 
     // Sin cuerpo. Si más adelante necesitas una consulta propia, basta con
     // declarar el método siguiendo la convención de nombres, por ejemplo:
