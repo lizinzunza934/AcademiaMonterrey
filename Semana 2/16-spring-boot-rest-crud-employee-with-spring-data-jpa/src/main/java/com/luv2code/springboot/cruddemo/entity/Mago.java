@@ -3,7 +3,7 @@ package com.luv2code.springboot.cruddemo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="employee")
+@Table(name="magos")
 public class Mago {
 
     // define fields
@@ -12,14 +12,14 @@ public class Mago {
     @Column(name="id")
     private int id;
 
-    @Column(name="first_name")
-    private String firstName;
+    @Column(name="nombre")
+    private String nombre;
 
-    @Column(name="last_name")
-    private String lastName;
+    @Column(name="apellido")
+    private String apellido;
 
-    @Column(name="email")
-    private String email;
+    @Column(name="casa")
+    private String casa;
 
 
     // define constructors
@@ -27,10 +27,10 @@ public class Mago {
 
     }
 
-    public Mago(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public Mago(String nombre, String apellido, String casa) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.casa = casa;
     }
 
     // define getter/setter
@@ -43,28 +43,28 @@ public class Mago {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setNombre(String firstName) {
+        this.nombre = nombre;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCasa() {
+        return casa;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCasa(String email) {
+        this.casa = casa;
     }
 
     // define toString
@@ -72,9 +72,9 @@ public class Mago {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", casa='" + casa + '\'' +
                 '}';
     }
 }
