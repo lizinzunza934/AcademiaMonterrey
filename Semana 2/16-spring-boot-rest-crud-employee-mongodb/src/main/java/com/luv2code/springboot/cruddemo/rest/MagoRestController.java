@@ -11,20 +11,20 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class EmployeeRestController {
+public class MagoRestController {
 
     private MagoService magoService;
 
     private JsonMapper jsonMapper;
 
     @Autowired
-    public EmployeeRestController(MagoService theMagoService, JsonMapper theJsonMapper) {
+    public MagoRestController(MagoService theMagoService, JsonMapper theJsonMapper) {
         magoService = theMagoService;
         jsonMapper = theJsonMapper;
     }
 
     // expose "/employees" and return a list of employees
-    @GetMapping("/employees")
+    @GetMapping("/magos")
     public List<Mago> findAll() {
         return magoService.findAll();
     }
@@ -33,13 +33,13 @@ public class EmployeeRestController {
     //
     // El employeeId ahora es String: un ObjectId de MongoDB, no un entero.
 
-    @GetMapping("/employees/{employeeId}")
-    public Mago getEmployee(@PathVariable String employeeId) {
+    @GetMapping("/magos/{magoId}")
+    public Mago getMago(@PathVariable String magoId) {
 
-        Mago theMago = magoService.findById(employeeId);
+        Mago theMago = magoService.findById(magoId);
 
         if (theMago == null) {
-            throw new RuntimeException("Employee id not found - " + employeeId);
+            throw new RuntimeException("Id de mago no encontrada - " + magoId);
         }
 
         return theMago;
@@ -47,8 +47,8 @@ public class EmployeeRestController {
 
     // add mapping for POST /employees - add new employee
 
-    @PostMapping("/employees")
-    public Mago addEmployee(@RequestBody Mago theMago) {
+    @PostMapping("/magos")
+    public Mago addMago(@RequestBody Mago theMago) {
 
         // also just in case they pass an id in JSON ... set id to null
         // this is to force a save of new item ... instead of update
@@ -66,8 +66,8 @@ public class EmployeeRestController {
 
     // add mapping for PUT /employees - update existing employee
 
-    @PutMapping("/employees")
-    public Mago updateEmployee(@RequestBody Mago theMago) {
+    @PutMapping("/magos")
+    public Mago updateMago(@RequestBody Mago theMago) {
 
         Mago dbMago = magoService.save(theMago);
 
@@ -77,22 +77,22 @@ public class EmployeeRestController {
     // add mapping for PATCH /employees/{employeeId} - patch employee ... partial
     // update
 
-    @PatchMapping("/employees/{employeeId}")
-    public Mago patchEmployee(@PathVariable String employeeId,
+    @PatchMapping("/magos/{magoId}")
+    public Mago patchMago(@PathVariable String magoId,
                               @RequestBody Map<String, Object> patchPayload) {
 
         // Step 1: Retrieve the existing employee from database
-        Mago tempMago = magoService.findById(employeeId);
+        Mago tempMago = magoService.findById(magoId);
 
         if (tempMago == null) {
-            throw new RuntimeException("Employee id not found - " + employeeId);
+            throw new RuntimeException("Id del mago no ha sido encontrada - " + magoId);
         }
 
         // Step 2: Security check - prevent ID modifications
         // The ID should never change, so reject any attempts to modify it
         if (patchPayload.containsKey("id")) {
             throw new RuntimeException(
-                    "Employee id cannot be modified. Remove 'id' from request body.");
+                    "La id del mago no puede ser modificada. Remueve Id del request body.");
         }
 
         // Step 3: Apply the partial update
@@ -107,20 +107,20 @@ public class EmployeeRestController {
 
     // add mapping for DELETE /employees/{employeeId} - delete employee
 
-    @DeleteMapping("/employees/{employeeId}")
-    public String deleteEmployee(@PathVariable String employeeId) {
+    @DeleteMapping("/magos/{magoId}")
+    public String deleteMago(@PathVariable String magoId) {
 
-        Mago tempMago = magoService.findById(employeeId);
+        Mago tempMago = magoService.findById(magoId);
 
         // throw exception if null
 
         if (tempMago == null) {
-            throw new RuntimeException("Employee id not found - " + employeeId);
+            throw new RuntimeException("Id del mago no encontrada - " + magoId);
         }
 
-        magoService.deleteById(employeeId);
+        magoService.deleteById(magoId);
 
-        return "Deleted employee id - " + employeeId;
+        return "Id de mago borrada - " + magoId;
     }
 
 }
