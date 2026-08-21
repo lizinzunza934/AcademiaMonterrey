@@ -23,30 +23,30 @@ public class MagoRestController {
         jsonMapper = theJsonMapper;
     }
 
-    // expose "/employees" and return a list of employees
-    @GetMapping("/employees")
+    // expose "/magos" and return a list of magos
+    @GetMapping("/magos")
     public List<Mago> findAll() {
         return magoService.findAll();
     }
 
-    // add mapping for GET /employees/{employeeId}
+    // add mapping for GET /magos/{employeeId}
 
-    @GetMapping("/employees/{employeeId}")
-    public Mago getEmployee(@PathVariable int employeeId) {
+    @GetMapping("/magos/{magoId}")
+    public Mago getMago(@PathVariable int magoId) {
 
-        Mago theMago = magoService.findById(employeeId);
+        Mago theMago = magoService.findById(magoId);
 
         if (theMago == null) {
-            throw new RuntimeException("Employee id not found - " + employeeId);
+            throw new RuntimeException("Mago no ha sido encontrado - " + magoId);
         }
 
         return theMago;
     }
 
-    // add mapping for POST /employees - add new employee
+    // add mapping for POST /magos - add new mago
 
-    @PostMapping("/employees")
-    public Mago addEmployee(@RequestBody Mago theMago) {
+    @PostMapping("/magos")
+    public Mago addMago(@RequestBody Mago theMago) {
 
         // also just in case they pass an id in JSON ... set id to 0
         // this is to force a save of new item ... instead of update
@@ -58,35 +58,35 @@ public class MagoRestController {
         return dbMago;
     }
 
-    // add mapping for PUT /employees - update existing employee
+    // add mapping for PUT /magos - update existing magos
 
-    @PutMapping("/employees")
-    public Mago updateEmployee(@RequestBody Mago theMago) {
+    @PutMapping("/magos")
+    public Mago updateMago(@RequestBody Mago theMago) {
 
         Mago dbMago = magoService.save(theMago);
 
         return dbMago;
     }
 
-    // add mapping for PATCH /employees/{employeeId} - patch employee ... partial
+    // add mapping for PATCH /magos/{magoId} - patch mago ... partial
     // update
 
-    @PatchMapping("/employees/{employeeId}")
-    public Mago patchEmployee(@PathVariable int employeeId,
+    @PatchMapping("/magos/{magoId}")
+    public Mago patchMago(@PathVariable int magoId,
                               @RequestBody Map<String, Object> patchPayload) {
 
         // Step 1: Retrieve the existing employee from database
-        Mago tempMago = magoService.findById(employeeId);
+        Mago tempMago = magoService.findById(magoId);
 
         if (tempMago == null) {
-            throw new RuntimeException("Employee id not found - " + employeeId);
+            throw new RuntimeException("Id de mago no encontrada - " + magoId);
         }
 
         // Step 2: Security check - prevent ID modifications
         // The ID should never change, so reject any attempts to modify it
         if (patchPayload.containsKey("id")) {
             throw new RuntimeException(
-                    "Employee id cannot be modified. Remove 'id' from request body.");
+                    "La id del mago no puede ser modificada. Remueve id del request body.");
         }
 
         // Step 3: Apply the partial update
@@ -101,20 +101,20 @@ public class MagoRestController {
 
     // add mapping for DELETE /employees/{employeeId} - delete employee
 
-    @DeleteMapping("/employees/{employeeId}")
-    public String deleteEmployee(@PathVariable int employeeId) {
+    @DeleteMapping("/magos/{magoId}")
+    public String deleteMago(@PathVariable int magoId) {
 
-        Mago tempMago = magoService.findById(employeeId);
+        Mago tempMago = magoService.findById(magoId);
 
         // throw exception if null
 
         if (tempMago == null) {
-            throw new RuntimeException("Employee id not found - " + employeeId);
+            throw new RuntimeException("Id de mago no encontrada - " + magoId);
         }
 
-        magoService.deleteById(employeeId);
+        magoService.deleteById(magoId);
 
-        return "Deleted employee id - " + employeeId;
+        return "Se borró la Id del mago - " + magoId;
     }
 
 }
