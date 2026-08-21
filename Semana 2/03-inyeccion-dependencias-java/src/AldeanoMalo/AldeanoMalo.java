@@ -1,17 +1,17 @@
-package AldeanoMalo;
+/*
 
 public class AldeanoMalo {
     private String nombre;
-    private CanaDePescar herramienta;
+    private CanaDePescar herramienta; 
 
+//El aldeano hace su propia caña de pescar lo que genera acoplamiento
     public AldeanoMalo(String nombre) {
         this.nombre = nombre;
-        // el aldeano hace su propia caña lo que es el problema
-        this.herramienta = new CanaDePescar();
+        this.herramienta = new CanaDePescar(); // acoplamiento
     }
 
     public void trabajar() {
-        System.out.print(this.nombre + " dice: ");
         this.herramienta.usar();
     }
 }
+*/
