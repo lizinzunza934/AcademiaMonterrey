@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class MagoServiceImpl implements MagoService {
 
     // Antes se inyectaba EmployeeDAO. Ahora es el repositorio de Spring Data,
     // que no tiene implementación escrita a mano.
     private MagoRepository magoRepository;
 
     @Autowired
-    public EmployeeServiceImpl(MagoRepository theMagoRepository) {
+    public MagoServiceImpl(MagoRepository theMagoRepository) {
         magoRepository = theMagoRepository;
     }
 
