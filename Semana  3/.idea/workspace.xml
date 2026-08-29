@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e19bcf1-3b03-4c12-9ecd-035df170b3fa" name="Changes" comment="feat: inicializa estructura base y .gitignore Semana 3">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Semana  3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-    </list>
+    <list default="true" id="8e19bcf1-3b03-4c12-9ecd-035df170b3fa" name="Changes" comment="chore: integrar documento spring-security corregido" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +85,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: inicializa estructura base y .gitignore Semana 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: inicializa estructura base y .gitignore Semana 3" />
+    <MESSAGE value="chore: integrar códio y documentación de 01-core-avanzado" />
+    <MESSAGE value="chore: integrar código de 01- HTTP Basic" />
+    <MESSAGE value="chore: integrar código de 02- JWT" />
+    <MESSAGE value="chore: integrar código de 03- Oauth2" />
+    <MESSAGE value="chore: integrar documento spring-security" />
+    <MESSAGE value="chore: integrar documento spring-security corregido" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: integrar documento spring-security corregido" />
   </component>
 </project>
