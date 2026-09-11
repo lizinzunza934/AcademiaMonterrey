@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-09-08T15:44:43 CST" name="Automation Practice - POM" finished-at="2026-09-08T15:49:25 CST" duration-ms="281874">
+    <groups>
+    </groups>
+    <test started-at="2026-09-08T15:44:43 CST" name="Recorrido completo" finished-at="2026-09-08T15:49:25 CST" duration-ms="281874">
+      <class name="tests.MenuEmpresasTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.MenuEmpresasTest@399f45b1]" started-at="2026-09-08T15:46:21 CST" name="setUp" finished-at="2026-09-08T15:46:28 CST" duration-ms="7674" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validarNavegacionMenuEmpresas()[pri:0, instance:tests.MenuEmpresasTest@399f45b1]" started-at="2026-09-08T15:46:28 CST" name="validarNavegacionMenuEmpresas" finished-at="2026-09-08T15:46:40 CST" duration-ms="11728" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validarNavegacionMenuEmpresas -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.MenuEmpresasTest@399f45b1]" started-at="2026-09-08T15:46:40 CST" name="tearDown" finished-at="2026-09-08T15:46:40 CST" duration-ms="488" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.MenuEmpresasTest -->
+      <class name="tests.MenuAcercaDelBancoTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.MenuAcercaDelBancoTest@79e2c065]" started-at="2026-09-08T15:48:36 CST" name="setUp" finished-at="2026-09-08T15:48:43 CST" duration-ms="7046" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validarNavegacionAcercaDelBanco()[pri:0, instance:tests.MenuAcercaDelBancoTest@79e2c065]" started-at="2026-09-08T15:48:43 CST" name="validarNavegacionAcercaDelBanco" finished-at="2026-09-08T15:49:25 CST" duration-ms="41440" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validarNavegacionAcercaDelBanco -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.MenuAcercaDelBancoTest@79e2c065]" started-at="2026-09-08T15:49:25 CST" name="tearDown" finished-at="2026-09-08T15:49:25 CST" duration-ms="540" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.MenuAcercaDelBancoTest -->
+      <class name="tests.MenuBancaPrivadaTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.MenuBancaPrivadaTest@478190fc]" started-at="2026-09-08T15:48:08 CST" name="setUp" finished-at="2026-09-08T15:48:16 CST" duration-ms="7093" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validarNavegacionBancaPrivada()[pri:0, instance:tests.MenuBancaPrivadaTest@478190fc]" started-at="2026-09-08T15:48:16 CST" name="validarNavegacionBancaPrivada" finished-at="2026-09-08T15:48:36 CST" duration-ms="20168" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validarNavegacionBancaPrivada -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.MenuBancaPrivadaTest@478190fc]" started-at="2026-09-08T15:48:36 CST" name="tearDown" finished-at="2026-09-08T15:48:36 CST" duration-ms="488" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.MenuBancaPrivadaTest -->
+      <class name="tests.MenuPersonasTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.MenuPersonasTest@47af7f3d]" started-at="2026-09-08T15:44:43 CST" name="setUp" finished-at="2026-09-08T15:44:52 CST" duration-ms="8874" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validarNavegacionCompletaMenuPersonas()[pri:0, instance:tests.MenuPersonasTest@47af7f3d]" started-at="2026-09-08T15:44:52 CST" name="validarNavegacionCompletaMenuPersonas" finished-at="2026-09-08T15:46:20 CST" duration-ms="87539" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validarNavegacionCompletaMenuPersonas -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.MenuPersonasTest@47af7f3d]" started-at="2026-09-08T15:46:20 CST" name="tearDown" finished-at="2026-09-08T15:46:21 CST" duration-ms="695" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.MenuPersonasTest -->
+      <class name="tests.MenuPymesTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.MenuPymesTest@38c6f217]" started-at="2026-09-08T15:46:40 CST" name="setUp" finished-at="2026-09-08T15:46:48 CST" duration-ms="7267" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validarNavegacionMenuPymes()[pri:0, instance:tests.MenuPymesTest@38c6f217]" started-at="2026-09-08T15:46:48 CST" name="validarNavegacionMenuPymes" finished-at="2026-09-08T15:48:08 CST" duration-ms="80107" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validarNavegacionMenuPymes -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.MenuPymesTest@38c6f217]" started-at="2026-09-08T15:48:08 CST" name="tearDown" finished-at="2026-09-08T15:48:08 CST" duration-ms="635" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.MenuPymesTest -->
+    </test> <!-- Recorrido completo -->
+  </suite> <!-- Automation Practice - POM -->
+</testng-results>

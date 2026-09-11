@@ -1,0 +1,7 @@
+base\BaseTest.class
+tests\MenuAcercaDelBancoTest.class
+tests\MenuEmpresasTest.class
+tests\MenuPymesTest.class
+listeners\ScreenshotListener.class
+tests\MenuBancaPrivadaTest.class
+tests\MenuPersonasTest.class

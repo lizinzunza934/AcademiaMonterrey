@@ -1,0 +1,7 @@
+base\BasePage.class
+pages\MenuBancaPrivadaPage.class
+pages\MenuPersonasPage.class
+utils\DriverFactory.class
+pages\MenuAcercaDelBancoPage.class
+pages\MenuEmpresasPage.class
+pages\MenuPymesPage.class
